@@ -1,0 +1,20 @@
+Sub ErstelleDreispaltigeTabelle()
+
+    Dim oDoc As Object
+    Dim oText As Object
+    Dim oCursor As Object
+    Dim oTable As Object
+
+    ' Aktuelles Dokument (Writer)
+    oDoc = ThisComponent
+    oText = oDoc.Text
+    oCursor = oText.createTextCursor()
+
+    ' Neue Tabelle erzeugen: 5 Zeilen, 3 Spalten
+    oTable = oDoc.createInstance("com.sun.star.text.TextTable")
+    oTable.initialize(5, 3)
+
+    ' Tabelle an Cursor-Position einfügen
+    oText.insertTextContent(oCursor, oTable, False)
+
+End Sub
